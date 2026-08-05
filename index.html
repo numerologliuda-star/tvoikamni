@@ -1504,7 +1504,7 @@
             >
                 <p class="eyebrow">Интерактивная диагностика по камням</p>
 
-                <h1 id="start-title">Твои камни опоры</h1>
+                <h1 id="start-title">Твой камень опоры</h1>
 
                 <p class="hero-description">
                     Узнай, какой минерал может стать для тебя
@@ -1894,9 +1894,9 @@
                     <div class="result-intro-content">
                         <p class="result-kicker">Твой персональный результат</p>
 
-                        <h1 class="result-title" id="result-title">
-                            Твои камни поддержки
-                        </h1>
+                       <h1 class="result-title" id="result-title">
+    Твой камень опоры
+</h1>
 
                         <p class="result-subtitle" id="result-subtitle"></p>
                     </div>
@@ -3204,8 +3204,8 @@
             const resultTitle = document.getElementById("result-title");
 
             resultTitle.textContent = state.name.trim()
-                ? state.name.trim() + ", твои камни опоры"
-                : "Твои камни опоры";
+                ? state.name.trim() + ", твой камень опоры"
+                : "Твой камень опоры";
 
             document.getElementById("result-subtitle").textContent =
                 "Твой основной минерал — " +
@@ -3298,7 +3298,7 @@
             return [
                 nameLine,
                 "",
-                "Камни поддержки:",
+                "Твой камень опоры:",
                 "Основной минерал — " + profile.stone,
                 "Минерал текущего периода — " + request.supportStone,
                 "",
@@ -3333,7 +3333,7 @@
                 "Telegram-канал:",
                 CHANNEL_URL,
                 "",
-                "Интерактивный инструмент «Камни поддержки»",
+                "Интерактивный инструмент «Твой камень опоры»",
                 "Людмила Караяни"
             ].join("\n");
         }
@@ -3502,7 +3502,7 @@
             .getElementById("share-result")
             .addEventListener("click", async function () {
                 const shareData = {
-                    title: "Мои камни опоры",
+                    title: "Твой камень опоры",
                     text: getPlainTextResult()
                 };
 

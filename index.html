@@ -88,6 +88,10 @@
             max-width: 100%;
         }
 
+        [hidden] {
+            display: none !important;
+        }
+
         .page {
             min-height: 100vh;
             display: flex;
@@ -771,7 +775,7 @@
         }
 
         .result-title {
-            max-width: 620px;
+            max-width: 650px;
             margin-bottom: 18px;
             font-size: clamp(34px, 6.8vw, 58px);
         }
@@ -861,6 +865,122 @@
             font-size: 13px;
         }
 
+        .mini-stone {
+            margin-top: 22px;
+            padding-top: 21px;
+            border-top: 1px solid rgba(42, 42, 42, 0.1);
+        }
+
+        .mini-stone-heading {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .mini-stone-orb {
+            width: 78px;
+            height: 78px;
+            flex: 0 0 auto;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    rgba(255, 255, 255, 0.86),
+                    transparent 24%
+                ),
+                linear-gradient(
+                    145deg,
+                    var(--stone-color-one, #9D8CA8),
+                    var(--stone-color-two, #504B66)
+                );
+            border: 4px solid rgba(255, 255, 255, 0.88);
+            border-radius: 18px;
+            box-shadow:
+                0 10px 22px rgba(42, 42, 42, 0.15),
+                inset -7px -7px 13px rgba(0, 0, 0, 0.12);
+        }
+
+        .mini-stone-orb img,
+        .stone-orb img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .mini-stone-orb.image-fallback::before,
+        .stone-orb.image-fallback::before {
+            content: attr(data-initial);
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: var(--heading);
+            font-weight: 700;
+        }
+
+        .mini-stone-orb.image-fallback::before {
+            font-size: 29px;
+        }
+
+        .mini-stone-name {
+            margin: 0 0 2px;
+            font-family: var(--heading);
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .mini-stone-caption {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .pain-box,
+        .support-box,
+        .stone-help-box,
+        .practice-box {
+            margin-top: 17px;
+            padding: 17px 18px;
+            border-radius: 0 13px 13px 0;
+        }
+
+        .pain-box {
+            background: rgba(192, 112, 48, 0.075);
+            border-left: 3px solid var(--copper);
+        }
+
+        .support-box {
+            background: rgba(74, 106, 138, 0.075);
+            border-left: 3px solid var(--steel);
+        }
+
+        .box-title {
+            margin-bottom: 7px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .pain-box .box-title {
+            color: var(--copper);
+        }
+
+        .support-box .box-title {
+            color: var(--steel);
+        }
+
+        .box-text {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
         .stone-heading {
             display: flex;
             align-items: center;
@@ -869,8 +989,8 @@
         }
 
         .stone-orb {
-            width: 126px;
-            height: 126px;
+            width: 138px;
+            height: 138px;
             flex: 0 0 auto;
             position: relative;
             overflow: hidden;
@@ -886,41 +1006,20 @@
                     var(--stone-color-two, #504B66)
                 );
             border: 5px solid rgba(255, 255, 255, 0.86);
-            border-radius: 22px;
+            border-radius: 23px;
             box-shadow:
                 0 12px 26px rgba(42, 42, 42, 0.17),
                 inset -8px -8px 15px rgba(0, 0, 0, 0.13);
         }
 
-        .stone-orb img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 300ms ease;
-        }
-
-        .stone-orb:hover img {
-            transform: scale(1.04);
-        }
-
         .stone-orb.image-fallback::before {
-            content: attr(data-initial);
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            color: rgba(255, 255, 255, 0.86);
-            font-family: var(--heading);
-            font-size: 45px;
-            font-weight: 700;
+            font-size: 47px;
         }
 
         .stone-name {
             margin: 0 0 4px;
             font-family: var(--heading);
-            font-size: clamp(24px, 4vw, 31px);
+            font-size: clamp(27px, 4.5vw, 35px);
             font-weight: 700;
             line-height: 1.15;
         }
@@ -946,34 +1045,18 @@
             text-decoration: underline;
         }
 
-        .stone-help-box,
-        .practice-box,
-        .method-box {
-            margin-top: 21px;
-            padding: 18px 20px;
+        .stone-help-box {
             background: rgba(74, 106, 138, 0.07);
             border-left: 3px solid var(--steel);
-            border-radius: 0 13px 13px 0;
         }
 
-        .practice-box {
-            background: rgba(192, 112, 48, 0.08);
-            border-left-color: var(--copper);
-        }
-
-        .stone-help-title,
-        .practice-title,
-        .method-title {
+        .stone-help-title {
             margin-bottom: 7px;
             color: var(--steel);
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-        }
-
-        .practice-title {
-            color: var(--copper);
         }
 
         .highlight-card {
@@ -985,42 +1068,28 @@
                 );
         }
 
-        .stone-groups {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .practice-box {
+            background: rgba(192, 112, 48, 0.08);
+            border-left: 3px solid var(--copper);
         }
 
-        .stone-group-title {
-            margin: 0 0 11px;
-            font-size: 15px;
-            font-weight: 800;
-        }
-
-        .stone-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .stone-tag {
-            display: inline-flex;
-            align-items: center;
-            min-height: 34px;
-            padding: 7px 11px;
-            color: #414141;
-            background: rgba(255, 255, 255, 0.82);
-            border: 1px solid rgba(42, 42, 42, 0.12);
-            border-radius: 999px;
+        .practice-title {
+            margin-bottom: 7px;
+            color: var(--copper);
             font-size: 12px;
-            font-weight: 700;
-            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
-        .stone-tag.selected {
-            color: var(--white);
-            background: var(--copper);
-            border-color: var(--copper);
+        .method-note {
+            margin-top: 18px;
+            padding: 16px 18px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(42, 42, 42, 0.09);
+            border-radius: 14px;
+            font-size: 12px;
         }
 
         .interaction-list {
@@ -1170,10 +1239,6 @@
             transform: translate(-50%, 0);
         }
 
-        [hidden] {
-            display: none !important;
-        }
-
         @media (max-width: 700px) {
             .site-header {
                 align-items: flex-start;
@@ -1184,8 +1249,7 @@
             }
 
             .feature-row,
-            .result-grid,
-            .stone-groups {
+            .result-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1228,11 +1292,6 @@
                 gap: 9px;
             }
 
-            .hero-photo-label {
-                left: 11px;
-                bottom: 11px;
-            }
-
             .question-actions {
                 align-items: stretch;
                 flex-direction: column-reverse;
@@ -1245,11 +1304,6 @@
             .stone-heading {
                 align-items: flex-start;
                 flex-direction: column;
-            }
-
-            .stone-orb {
-                width: 118px;
-                height: 118px;
             }
 
             .expert-card {
@@ -1318,8 +1372,8 @@
                 <div class="hero-note">
                     Здесь не будет страшилок, жёстких предсказаний и обещаний,
                     что камень сделает всё за тебя. Мы спокойно посмотрим на
-                    твою базовую энергию, способ проявления и текущую точку
-                    опоры.
+                    твою внутреннюю основу, способ проявления и актуальную
+                    точку опоры.
                 </div>
 
                 <div
@@ -1366,30 +1420,30 @@
                     <article class="feature">
                         <div class="feature-number">01</div>
 
-                        <p class="feature-title">Два числа твоей даты</p>
+                        <p class="feature-title">Камень характера</p>
 
                         <p class="feature-text">
-                            Число характера и число экспрессии.
+                            Покажет твою внутреннюю опору и уязвимость.
                         </p>
                     </article>
 
                     <article class="feature">
                         <div class="feature-number">02</div>
 
-                        <p class="feature-title">Один камень опоры</p>
+                        <p class="feature-title">Камень экспрессии</p>
 
                         <p class="feature-text">
-                            Выбран из личного списка с учётом запроса.
+                            Подсветит, что мешает действовать и проявляться.
                         </p>
                     </article>
 
                     <article class="feature">
                         <div class="feature-number">03</div>
 
-                        <p class="feature-title">Практический шаг</p>
+                        <p class="feature-title">Главный акцент сейчас</p>
 
                         <p class="feature-text">
-                            Без воды: одна понятная точка опоры.
+                            Один камень с учётом твоего текущего запроса.
                         </p>
                     </article>
                 </div>
@@ -1718,6 +1772,56 @@
                         </div>
 
                         <p id="character-description"></p>
+
+                        <div class="mini-stone">
+                            <div class="mini-stone-heading">
+                                <div
+                                    class="mini-stone-orb"
+                                    id="character-stone-orb"
+                                    data-initial=""
+                                >
+                                    <img
+                                        id="character-stone-image"
+                                        alt=""
+                                        loading="lazy"
+                                        hidden
+                                    >
+                                </div>
+
+                                <div>
+                                    <p class="mini-stone-caption">
+                                        Камень характера
+                                    </p>
+
+                                    <p
+                                        class="mini-stone-name"
+                                        id="character-stone-name"
+                                    ></p>
+                                </div>
+                            </div>
+
+                            <div class="pain-box">
+                                <div class="box-title">
+                                    Твоя внутренняя боль
+                                </div>
+
+                                <p
+                                    class="box-text"
+                                    id="character-pain"
+                                ></p>
+                            </div>
+
+                            <div class="support-box">
+                                <div class="box-title">
+                                    Когда камень может стать опорой
+                                </div>
+
+                                <p
+                                    class="box-text"
+                                    id="character-stone-support"
+                                ></p>
+                            </div>
+                        </div>
                     </article>
 
                     <article class="result-card">
@@ -1733,9 +1837,10 @@
                             </div>
 
                             <div>
-                                <p class="number-title">
-                                    Энергия проявления
-                                </p>
+                                <p
+                                    class="number-title"
+                                    id="expression-title"
+                                ></p>
 
                                 <p class="number-caption">
                                     Число экспрессии
@@ -1744,19 +1849,71 @@
                         </div>
 
                         <p id="expression-description"></p>
+
+                        <div class="mini-stone">
+                            <div class="mini-stone-heading">
+                                <div
+                                    class="mini-stone-orb"
+                                    id="expression-stone-orb"
+                                    data-initial=""
+                                >
+                                    <img
+                                        id="expression-stone-image"
+                                        alt=""
+                                        loading="lazy"
+                                        hidden
+                                    >
+                                </div>
+
+                                <div>
+                                    <p class="mini-stone-caption">
+                                        Камень проявления
+                                    </p>
+
+                                    <p
+                                        class="mini-stone-name"
+                                        id="expression-stone-name"
+                                    ></p>
+                                </div>
+                            </div>
+
+                            <div class="pain-box">
+                                <div class="box-title">
+                                    Сложность в проявлении
+                                </div>
+
+                                <p
+                                    class="box-text"
+                                    id="expression-pain"
+                                ></p>
+                            </div>
+
+                            <div class="support-box">
+                                <div class="box-title">
+                                    Когда камень может стать опорой
+                                </div>
+
+                                <p
+                                    class="box-text"
+                                    id="expression-stone-support"
+                                ></p>
+                            </div>
+                        </div>
                     </article>
 
                     <article class="result-card full">
-                        <div class="result-label">Твой камень опоры</div>
+                        <div class="result-label">
+                            Главный акцент на текущий период
+                        </div>
 
                         <div class="stone-heading">
                             <div
                                 class="stone-orb"
-                                id="result-stone-orb"
+                                id="main-stone-orb"
                                 data-initial=""
                             >
                                 <img
-                                    id="result-stone-image"
+                                    id="main-stone-image"
                                     alt=""
                                     loading="lazy"
                                     hidden
@@ -1766,17 +1923,17 @@
                             <div>
                                 <p
                                     class="stone-name"
-                                    id="result-stone-name"
+                                    id="main-stone-name"
                                 ></p>
 
                                 <p
                                     class="stone-type"
-                                    id="result-stone-type"
+                                    id="main-stone-type"
                                 ></p>
 
                                 <a
                                     class="stone-photo-credit"
-                                    id="result-stone-credit"
+                                    id="main-stone-credit"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     hidden
@@ -1786,14 +1943,20 @@
                             </div>
                         </div>
 
-                        <p id="result-stone-description"></p>
+                        <p id="main-stone-description"></p>
 
                         <div class="stone-help-box">
                             <div class="stone-help-title">
-                                Почему именно этот минерал
+                                Почему именно он сейчас
                             </div>
 
-                            <p id="result-stone-help"></p>
+                            <p id="main-stone-help"></p>
+                        </div>
+
+                        <div class="method-note">
+                            Полный список подходящих минералов остаётся внутри
+                            расчёта. Здесь показаны только два персональных
+                            камня и главный акцент на текущий период.
                         </div>
                     </article>
 
@@ -1810,50 +1973,6 @@
                             </div>
 
                             <p id="practice-text"></p>
-                        </div>
-                    </article>
-
-                    <article class="result-card full">
-                        <div class="result-label">Камни твоей даты</div>
-
-                        <div class="stone-groups">
-                            <div>
-                                <p class="stone-group-title">
-                                    По числу характера
-                                    <span id="character-group-number"></span>
-                                </p>
-
-                                <div
-                                    class="stone-tags"
-                                    id="character-stone-list"
-                                ></div>
-                            </div>
-
-                            <div>
-                                <p class="stone-group-title">
-                                    По числу экспрессии
-                                    <span id="expression-group-number"></span>
-                                </p>
-
-                                <div
-                                    class="stone-tags"
-                                    id="expression-stone-list"
-                                ></div>
-                            </div>
-                        </div>
-
-                        <div class="method-box">
-                            <div class="method-title">
-                                Как получен результат
-                            </div>
-
-                            <p>
-                                Число характера считается по дню рождения.
-                                Число экспрессии — по сумме дня и месяца.
-                                Для обоих чисел используется нумерологическая
-                                таблица камней от 1 до 9. Текущий запрос помогает
-                                выбрать один главный минерал из личного списка.
-                            </p>
                         </div>
                     </article>
 
@@ -2041,14 +2160,6 @@
         const CHANNEL_URL = "https://t.me/numerologiia";
         const BRACELET_ORDER_URL = "https://t.me/liuda_karayani";
 
-        /*
-         * Число характера — свёрнутый день рождения.
-         * Число экспрессии — свёрнутая сумма дня и месяца.
-         *
-         * Таблица камней 1–9 из методического пособия
-         * применяется к обоим числам.
-         */
-
         const stoneGroups = {
             1: [
                 "Коралл",
@@ -2129,125 +2240,189 @@
             ]
         };
 
-        const numberProfiles = {
+        const numberInsights = {
             1: {
-                title: "Энергия начала",
+                characterTitle: "Энергия начала",
 
-                description:
-                    "Ты умеешь первой видеть направление и запускать движение. Твоя сила — в самостоятельности и внутреннем импульсе. Но иногда ты слишком долго держишь всё на себе и воспринимаешь паузу как слабость."
+                characterDescription:
+                    "Внутри тебя много самостоятельности, инициативы и желания самой определять направление. Ты умеешь начинать и вести за собой.",
+
+                characterPain:
+                    "Ты можешь так привыкнуть справляться самостоятельно, что просьба о помощи начинает ощущаться слабостью. Внутри появляется напряжение: всё зависит от меня, останавливаться нельзя.",
+
+                expressionTitle: "Проявление через инициативу",
+
+                expressionDescription:
+                    "Во внешнем мире тебе важно действовать первой, принимать решения и видеть конкретную цель.",
+
+                expressionPain:
+                    "Когда нет ясного направления, ты можешь либо слишком давить на себя, либо резко терять энергию. Иногда кажется, что проявляться можно только уверенно и без права на ошибку."
             },
 
             2: {
-                title: "Энергия чувствительности",
+                characterTitle: "Энергия чувствительности",
 
-                description:
-                    "Ты тонко чувствуешь людей, атмосферу и то, что не всегда произносится вслух. Твоя сила — в контакте и способности замечать нюансы. Перекос начинается, когда чужие эмоции становятся важнее твоих собственных потребностей."
+                characterDescription:
+                    "Ты тонко чувствуешь людей, настроение пространства и то, что не всегда произносится вслух.",
+
+                characterPain:
+                    "Чужие эмоции могут становиться громче твоих собственных желаний. Ты стараешься сохранить мир, подстроиться и никого не задеть, а потом остаёшься без сил.",
+
+                expressionTitle: "Проявление через контакт",
+
+                expressionDescription:
+                    "Ты раскрываешься через сотрудничество, поддержку, диалог и умение замечать нюансы.",
+
+                expressionPain:
+                    "Тебе может быть сложно проявлять инициативу без подтверждения другого человека. Страх конфликта или неодобрения заставляет долго сомневаться и откладывать решение."
             },
 
             3: {
-                title: "Энергия самовыражения",
+                characterTitle: "Энергия самовыражения",
 
-                description:
-                    "Ты раскрываешься через общение, творчество, идеи и живую реакцию на мир. Твоя сила — зажигать и показывать новые возможности. Но когда нет пространства для самовыражения, энергия может уходить в суету или эмоциональные качели."
+                characterDescription:
+                    "Твоя внутренняя сила раскрывается через творчество, эмоции, речь, идеи и живой интерес к жизни.",
+
+                characterPain:
+                    "Когда нет пространства для самовыражения, внутри накапливается ощущение, что тебя не видят и не слышат. Энергия может уходить в суету, раздражение или эмоциональные качели.",
+
+                expressionTitle: "Проявление через слово",
+
+                expressionDescription:
+                    "Ты лучше всего проявляешься через общение, творчество, красоту, юмор и передачу своих идей.",
+
+                expressionPain:
+                    "Ты можешь ждать вдохновения или идеальной формы, прежде чем показать себя. Из-за этого хорошие идеи остаются внутри, а уверенность постепенно снижается."
             },
 
             4: {
-                title: "Энергия структуры",
+                characterTitle: "Энергия структуры",
 
-                description:
-                    "Ты умеешь создавать порядок, выдерживать нагрузку и доводить начатое до результата. На тебя действительно можно опереться. Но иногда устойчивость превращается в жёсткость, а ответственность — в привычку тащить всё самостоятельно."
+                characterDescription:
+                    "Ты умеешь создавать порядок, выдерживать нагрузку и доводить начатое до результата.",
+
+                characterPain:
+                    "Ответственность может превращаться в привычку всё контролировать и тащить самостоятельно. Даже во время отдыха внутри продолжает работать список обязанностей.",
+
+                expressionTitle: "Проявление через систему",
+
+                expressionDescription:
+                    "Во внешнем мире ты раскрываешься через порядок, надёжность, понятные правила и последовательные действия.",
+
+                expressionPain:
+                    "Тебе бывает трудно начать, пока нет полного плана и ощущения безопасности. Перемены могут восприниматься как угроза устойчивости, даже когда старый порядок уже не работает."
             },
 
             5: {
-                title: "Энергия движения",
+                characterTitle: "Энергия движения",
 
-                description:
-                    "Тебе важно чувствовать жизнь, свободу выбора и возможность двигаться. Ты быстро адаптируешься и умеешь находить новый путь. Но при перегрузе можешь распыляться, начинать слишком многое или принимать решения только ради ощущения перемен."
+                characterDescription:
+                    "Тебе важно чувствовать свободу, интерес, перемены и возможность самостоятельно выбирать свой путь.",
+
+                characterPain:
+                    "Однообразие и ограничения быстро лишают тебя энергии. Но иногда новые дела и перемены становятся способом не встречаться с внутренним напряжением.",
+
+                expressionTitle: "Проявление через свободу",
+
+                expressionDescription:
+                    "Ты раскрываешься через движение, общение, эксперименты, новые знания и нестандартные решения.",
+
+                expressionPain:
+                    "Ты можешь распыляться между множеством вариантов и бросать начатое, когда исчезает первый интерес. Из-за этого появляется ощущение, что ты много делаешь, но стоишь на месте."
             },
 
             6: {
-                title: "Энергия заботы",
+                characterTitle: "Энергия заботы",
 
-                description:
-                    "Ты умеешь создавать тепло, объединять людей и замечать, кому нужна поддержка. Твоя сила — в заботе и чувстве гармонии. Но иногда ты слишком долго сохраняешь мир ценой собственных желаний и усталости."
+                characterDescription:
+                    "Ты умеешь создавать тепло, красоту, близость и замечать, кому рядом нужна поддержка.",
+
+                characterPain:
+                    "Забота о других может постепенно вытеснять заботу о себе. Ты долго сохраняешь мир, терпишь и помогаешь, а потом обнаруживаешь сильную усталость и обиду.",
+
+                expressionTitle: "Проявление через гармонию",
+
+                expressionDescription:
+                    "Ты проявляешься через отношения, красоту, помощь людям, ответственность и создание уютного пространства.",
+
+                expressionPain:
+                    "Тебе бывает сложно обозначать цену, границы и собственные желания. Возникает страх показаться эгоистичной, неудобной или недостаточно доброй."
             },
 
             7: {
-                title: "Энергия глубины",
+                characterTitle: "Энергия глубины",
 
-                description:
-                    "Ты воспринимаешь происходящее глубже, чем может показаться со стороны. Тебе важно почувствовать внутреннюю правильность своего шага. Но когда вокруг много чужих мнений и требований, ты можешь закрываться и слишком долго сомневаться."
+                characterDescription:
+                    "Ты воспринимаешь происходящее глубже, чем может показаться со стороны. Тебе важно понимать смысл и чувствовать внутреннюю правильность шага.",
+
+                characterPain:
+                    "Когда вокруг много чужих мнений и требований, ты можешь закрываться, уходить в мысли и долго искать единственно правильный ответ. Контакт с собственными чувствами становится тише.",
+
+                expressionTitle: "Проявление через понимание",
+
+                expressionDescription:
+                    "Ты раскрываешься через анализ, знания, наблюдение, интуицию и способность видеть скрытые связи.",
+
+                expressionPain:
+                    "Ты можешь слишком долго готовиться и проверять себя, прежде чем показать результат. Страх ошибиться или быть неправильно понятой мешает сделать первый видимый шаг."
             },
 
             8: {
-                title: "Энергия силы",
+                characterTitle: "Энергия силы",
 
-                description:
-                    "Ты умеешь брать ответственность, видеть практическую сторону ситуации и собирать результат. Твоя сила ощущается даже тогда, когда ты ничего не доказываешь. Но иногда ты так привыкаешь быть сильной, что перестаёшь замечать собственную усталость."
+                characterDescription:
+                    "Ты умеешь брать ответственность, собирать результат и видеть практическую сторону ситуации.",
+
+                characterPain:
+                    "Ты можешь так привыкнуть быть сильной, что перестаёшь замечать собственную усталость. Слабость, неопределённость и просьба о помощи кажутся опасными.",
+
+                expressionTitle: "Проявление через влияние",
+
+                expressionDescription:
+                    "Ты проявляешься через управление, деньги, ответственность, масштаб и способность принимать серьёзные решения.",
+
+                expressionPain:
+                    "Контроль может становиться главным способом чувствовать безопасность. Когда результат не приходит быстро, появляется жёсткость к себе и ощущение, что нужно работать ещё больше."
             },
 
             9: {
-                title: "Энергия смысла",
+                characterTitle: "Энергия смысла",
 
-                description:
-                    "Ты умеешь видеть общую картину, чувствовать смысл и сопереживать другим людям. Твоя сила — в зрелом взгляде и способности завершать старое. Но иногда ты долго несёшь чужие истории и не разрешаешь себе отпустить то, что уже закончилось."
+                characterDescription:
+                    "Ты умеешь видеть общую картину, чувствовать людей и находить более глубокий смысл происходящего.",
+
+                characterPain:
+                    "Ты можешь долго нести чужие истории, боль и ответственность. Иногда сложно отпустить прошлое, завершить отношения или признать, что определённый этап уже закончился.",
+
+                expressionTitle: "Проявление через пользу",
+
+                expressionDescription:
+                    "Ты раскрываешься через помощь людям, творчество, передачу опыта и способность видеть ситуацию шире.",
+
+                expressionPain:
+                    "Тебе бывает трудно отделить своё желание помогать от необходимости спасать. Собственные цели и деньги могут отодвигаться на второй план."
             }
-        };
-
-        const expressionDescriptions = {
-            1:
-                "В действиях тебе важно ощущать самостоятельность и видеть конкретное направление. Когда цель размыта, ты можешь либо давить на себя, либо резко терять интерес.",
-
-            2:
-                "Ты проявляешься через контакт, наблюдение и тонкое понимание людей. Тебе важно не путать чуткость с необходимостью постоянно подстраиваться.",
-
-            3:
-                "Ты лучше всего раскрываешься через речь, творчество и обмен идеями. Энергия снижается, когда приходится долго молчать о важном или жить только по инструкции.",
-
-            4:
-                "Ты двигаешься через систему, порядок и понятные шаги. Сложность появляется, когда план становится важнее твоего состояния и реальных обстоятельств.",
-
-            5:
-                "Ты проявляешься через движение, перемены и поиск новых решений. Тебе важно отличать живое развитие от попытки убежать от напряжения.",
-
-            6:
-                "Ты раскрываешься через заботу, красоту, отношения и создание гармонии. Важно помнить: твои потребности не менее значимы, чем комфорт окружающих.",
-
-            7:
-                "Ты проявляешься через анализ, наблюдение и глубокое понимание. Тебе требуется время на внутреннюю настройку, но не каждый ответ нужно искать бесконечно.",
-
-            8:
-                "Ты проявляешься через ответственность, влияние и умение работать с материальными задачами. Твоя сила становится устойчивее, когда тебе не приходится всё контролировать.",
-
-            9:
-                "Ты раскрываешься через смысл, помощь людям и способность видеть ситуацию шире. Тебе важно не растворяться в чужих задачах и вовремя завершать исчерпанные истории."
         };
 
         const stoneCatalog = {
             "Коралл": {
                 name: "Коралл",
                 colors: ["#D6786D", "#8B3935"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Preserved%20Coral.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Preserved_Coral.jpg",
-
                 description:
-                    "Коралл связывают с мудростью, благоразумием, скромностью, жизнью и энергией. Он может стать напоминанием действовать не из суеты, а из спокойного понимания ситуации."
+                    "Коралл связывают с мудростью, благоразумием, жизнью и энергией. Он может напоминать действовать не из суеты, а из спокойного понимания ситуации."
             },
 
             "Аметист": {
                 name: "Аметист",
                 colors: ["#9B86B5", "#55496B"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Amethyst%20specimen.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Amethyst_specimen.jpg",
-
                 description:
                     "Аметист называют природным антистрессом. Его связывают с внутренней силой, покоем, интуицией и снижением накопленного напряжения."
             },
@@ -2255,13 +2430,10 @@
             "Лазурит": {
                 name: "Лазурит",
                 colors: ["#315BA3", "#172B64"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Lapis-lazuli_hg.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Lapis-lazuli_hg.jpg",
-
                 description:
                     "Лазурит связывают с осознанностью, озарением и правдой. Он напоминает отделять свои настоящие мысли и желания от чужих ожиданий."
             },
@@ -2269,51 +2441,32 @@
             "Гелиотроп": {
                 name: "Гелиотроп",
                 colors: ["#658367", "#2F4D3C"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Heliotrope%20%28GeoDIL%20number%20-%20709%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Heliotrope_(GeoDIL_number_-_709).jpg",
-
                 description:
                     "Гелиотроп связывают с выносливостью, жизненной силой и повышением уровня энергии. Он напоминает бережно возвращать ресурс, а не заставлять себя терпеть ещё больше."
-            },
-
-            "Сардоникс": {
-                name: "Сардоникс",
-                colors: ["#B87555", "#5E382D"],
-                image: "",
-                imagePage: "",
-
-                description:
-                    "Сардоникс связывают с жизненными силами, удачей, везением и снижением страха перед будущим. Он символизирует более спокойное движение вперёд."
             },
 
             "Рубин": {
                 name: "Рубин",
                 colors: ["#C94E61", "#721D34"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Corundum-denv08-11a.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Corundum-denv08-11a.jpg",
-
                 description:
-                    "Рубин в глоссарии связывается со взаимностью чувств. Он может стать символом отношений, в которых тепло и внимание движутся в обе стороны."
+                    "Рубин связывают со взаимностью чувств и живой сердечной энергией. Он может стать символом отношений, в которых тепло движется в обе стороны."
             },
 
             "Цитрин": {
                 name: "Цитрин",
                 colors: ["#E8C662", "#B87824"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Cuarzo%20citrino%20natural.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Cuarzo_citrino_natural.jpg",
-
                 description:
                     "Цитрин называют камнем света, счастья и изобилия. Он символически поддерживает способность замечать возможности и не уменьшать собственную ценность."
             },
@@ -2321,27 +2474,21 @@
             "Тигровый глаз": {
                 name: "Тигровый глаз",
                 colors: ["#C18A3E", "#5D351A"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Tiger%27s_eye_quartz_8.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Tiger%27s_eye_quartz_8.jpg",
-
                 description:
-                    "Тигровый глаз связывают с мужеством, волей, внутренней силой, оптимизмом и новыми возможностями. Он напоминает двигаться к результату без постоянной борьбы с собой."
+                    "Тигровый глаз связывают с мужеством, волей, внутренней силой, оптимизмом и новыми возможностями."
             },
 
             "Топаз": {
                 name: "Топаз",
                 colors: ["#D8C88F", "#887048"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Topaz-74791.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Topaz-74791.jpg",
-
                 description:
                     "Топаз связывают с дружбой, снижением конфликтов, признанием, оптимизмом, богатством и равновесием чувств."
             },
@@ -2349,111 +2496,87 @@
             "Нефрит": {
                 name: "Нефрит",
                 colors: ["#7A9A75", "#385B48"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Nephrite%20jade%20%28Precambrian%29%20%28Granite%20Mountains%2C%20Fremont%20County%2C%20Wyoming%2C%20USA%29%203%20%2849703436701%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Nephrite_jade_(Precambrian)_(Granite_Mountains,_Fremont_County,_Wyoming,_USA)_3_(49703436701).jpg",
-
                 description:
-                    "Нефрит связывают с богатством, процветанием, достижением целей и способностью замечать ограничивающие убеждения. Он символизирует спокойные и повторяемые действия."
+                    "Нефрит связывают с богатством, процветанием, достижением целей и способностью замечать ограничивающие убеждения."
             },
 
             "Сердолик": {
                 name: "Сердолик",
                 colors: ["#DB835A", "#94442D"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Carnelian%20sard%20%28mineral%20specimen%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Carnelian_sard_(mineral_specimen).jpg",
-
                 description:
-                    "Сердолик называют камнем мужества, женской силы, уверенности, действия и творческой энергии. Он напоминает, что проявляться можно живо, а не идеально."
+                    "Сердолик называют камнем мужества, женской силы, уверенности, действия и творческой энергии."
             },
 
             "Изумруд": {
                 name: "Изумруд",
                 colors: ["#4E9970", "#1D553D"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Raw%20emerald.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Raw_emerald.jpg",
-
                 description:
-                    "Изумруд связывают с ясностью ума, мечтами и верностью в отношениях. Он символизирует способность сохранять важное, не теряя собственных ориентиров."
+                    "Изумруд связывают с ясностью ума, мечтами и верностью. Он символизирует способность сохранять важное, не теряя собственных ориентиров."
             },
 
             "Авантюрин": {
                 name: "Авантюрин",
                 colors: ["#7FA07D", "#45664B"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Quarz%20-%20Aventurin.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Quarz_-_Aventurin.jpg",
-
                 description:
-                    "Авантюрин связывают с удачей, процветанием и новыми возможностями. Он символизирует готовность заметить шанс и сделать шаг, не дожидаясь идеального момента."
+                    "Авантюрин связывают с удачей, процветанием и новыми возможностями. Он символизирует готовность заметить шанс и сделать шаг."
             },
 
             "Аквамарин": {
                 name: "Аквамарин",
                 colors: ["#86BFC6", "#397985"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Akvamarin%201.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Akvamarin_1.jpg",
-
                 description:
-                    "Аквамарин связывают с самооценкой, выносливостью и внутренним развитием. Он напоминает действовать с уважением к себе, а не через постоянное доказательство своей ценности."
+                    "Аквамарин связывают с самооценкой, выносливостью и внутренним развитием. Он напоминает действовать с уважением к себе."
             },
 
             "Сапфир": {
                 name: "Сапфир",
                 colors: ["#426CB5", "#1C326B"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Sapphire%20%28gem%20gravel%20mine%2C%20Ratnapura%20area%2C%20Sri%20Lanka%29%205%20%2834014779764%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Sapphire_(gem_gravel_mine,_Ratnapura_area,_Sri_Lanka)_5_(34014779764).jpg",
-
                 description:
-                    "Сапфир связывают с решительностью и храбростью. Он может стать символом спокойной смелости — делать важное, не ожидая полного исчезновения страха."
+                    "Сапфир связывают с решительностью и храбростью. Он может стать символом спокойной смелости."
             },
 
             "Гранат": {
                 name: "Гранат",
                 colors: ["#A64045", "#5E1F2D"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Garnet%20mineral.JPG?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Garnet_mineral.JPG",
-
                 description:
-                    "Гранат связывают со страстью, жизненной силой и плавным течением энергии. Он помогает символически собраться, укорениться и вернуться в настоящий момент."
+                    "Гранат связывают со страстью, жизненной силой и плавным течением энергии. Он помогает символически собраться и вернуться в настоящий момент."
             },
 
             "Хризолит": {
                 name: "Хризолит",
                 colors: ["#A9B95F", "#60722E"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Peridot%20crystal%20%2851742300233%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Peridot_crystal_(51742300233).jpg",
-
                 description:
                     "Хризолит связывают с удачей, хорошим настроением, чувством собственного достоинства и освобождением от страхов."
             },
@@ -2461,127 +2584,100 @@
             "Берилл": {
                 name: "Берилл",
                 colors: ["#A9C7B6", "#547866"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Beryl%20%28probably%20from%20Pennsylvania%2C%20USA%29%201.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Beryl_(probably_from_Pennsylvania,_USA)_1.jpg",
-
                 description:
-                    "Берилл связывают с сохранением рабочего настроя и защитой от внутреннего выгорания. Он напоминает, что продуктивность не должна строиться на полном истощении."
+                    "Берилл связывают с сохранением рабочего настроя и защитой от внутреннего выгорания."
             },
 
             "Бирюза": {
                 name: "Бирюза",
                 colors: ["#61A8A2", "#2E7476"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Turquoise%20%28Kingman%20Mining%20District%2C%20Arizona%2C%20USA%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Turquoise_(Kingman_Mining_District,_Arizona,_USA).jpg",
-
                 description:
-                    "Бирюзу связывают с чистым и открытым общением, которое идёт от сердца. Она напоминает говорить о желаниях прямо, не замалчивая важное."
+                    "Бирюзу связывают с чистым и открытым общением, которое идёт от сердца."
             },
 
             "Лунный камень": {
                 name: "Лунный камень",
                 colors: ["#D8DCE4", "#8B91A2"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Raw%20Moonstone.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Raw_Moonstone.jpg",
-
                 description:
-                    "Лунный камень связывают с женской энергией и внутренним ритмом. Он напоминает возвращаться к собственным ощущениям и не принимать все решения только из напряжённой головы."
+                    "Лунный камень связывают с женской энергией и внутренним ритмом. Он напоминает возвращаться к собственным ощущениям."
             },
 
             "Обсидиан": {
                 name: "Обсидиан",
                 colors: ["#494949", "#151515"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Obsidian_%28GeoDIL_number_-_110%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Obsidian_(GeoDIL_number_-_110).jpg",
-
                 description:
-                    "Обсидиан связывают с восстановлением сердца и эмоционального состояния после тяжёлого опыта. Он символизирует честную встречу с тем, что уже пора увидеть и отпустить."
+                    "Обсидиан связывают с восстановлением эмоционального состояния после тяжёлого опыта."
             },
 
             "Яшма": {
                 name: "Яшма",
                 colors: ["#A36C4F", "#633D31"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Jasper_%2832132824820%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Jasper_(32132824820).jpg",
-
                 description:
-                    "Яшму связывают с глубокой связью с энергией Земли и устойчивостью. Она символизирует возвращение внимания к телу, фактам и тому, что уже находится под ногами."
+                    "Яшму связывают с глубокой связью с энергией Земли и устойчивостью. Она символизирует возвращение к телу и реальным фактам."
             },
 
             "Гематит": {
                 name: "Гематит",
                 colors: ["#777B80", "#25282B"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Hematite%20or%20haematite.JPG?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Hematite_or_haematite.JPG",
-
                 description:
-                    "Гематит связывают с равновесием, спокойствием и стабильностью. Он символизирует заземление, ясные границы и способность видеть реальные факты вместо тревожных сценариев."
+                    "Гематит связывают с равновесием, спокойствием и стабильностью. Он символизирует заземление и ясные границы."
             },
 
             "Жемчуг": {
                 name: "Жемчуг",
                 colors: ["#E8E2D6", "#AAA49A"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Pearls%201.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Pearls_1.jpg",
-
                 description:
-                    "Жемчуг связывают с отношениями, сохранением любви, женской красотой и сердечной теплотой. Он символизирует бережность без отказа от себя."
+                    "Жемчуг связывают с отношениями, сохранением любви, женской красотой и сердечной теплотой."
             },
 
             "Янтарь": {
                 name: "Янтарь",
                 colors: ["#E6A83D", "#A05C1B"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Amber%20%28resinite%29%20%28Baltics%29.jpg?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Amber_(resinite)_(Baltics).jpg",
-
                 description:
-                    "Янтарь связывают с правильным выбором в дружбе и любви. Он символизирует возвращение к теплу и отношениям, в которых не приходится постоянно жертвовать собой."
+                    "Янтарь связывают с правильным выбором в дружбе и любви. Он символизирует возвращение к теплу."
             },
 
             "Горный хрусталь": {
                 name: "Горный хрусталь",
                 colors: ["#E5E8EA", "#9AA7AD"],
-
                 image:
                     "https://commons.wikimedia.org/wiki/Special:FilePath/Quartz%20var%20Rock%20Crystal%20NHMLA.png?width=700",
-
                 imagePage:
                     "https://commons.wikimedia.org/wiki/File:Quartz_var_Rock_Crystal_NHMLA.png",
-
                 description:
-                    "Горный хрусталь называют камнем ясности, который усиливает намерение. Он символизирует чистый фокус и помогает отделить важный следующий шаг от лишнего шума."
+                    "Горный хрусталь называют камнем ясности, который усиливает намерение и помогает отделить важный шаг от лишнего шума."
             }
         };
 
@@ -2610,7 +2706,6 @@
                 "Сапфир",
                 "Янтарь",
                 "Жемчуг",
-                "Сардоникс",
                 "Рубин",
                 "Изумруд"
             ],
@@ -2632,7 +2727,6 @@
                 "Цитрин",
                 "Янтарь",
                 "Жемчуг",
-                "Сардоникс",
                 "Изумруд",
                 "Сердолик",
                 "Авантюрин",
@@ -2668,7 +2762,6 @@
                 "Яшма",
                 "Янтарь",
                 "Жемчуг",
-                "Сардоникс",
                 "Рубин",
                 "Аквамарин"
             ],
@@ -2696,7 +2789,6 @@
                 "Яшма",
                 "Янтарь",
                 "Жемчуг",
-                "Сардоникс",
                 "Рубин",
                 "Изумруд",
                 "Берилл"
@@ -2712,7 +2804,6 @@
                 "Обсидиан",
                 "Лунный камень",
                 "Аметист",
-                "Сардоникс",
                 "Коралл",
                 "Нефрит",
                 "Цитрин",
@@ -2756,7 +2847,6 @@
                 "Коралл",
                 "Янтарь",
                 "Жемчуг",
-                "Сардоникс",
                 "Рубин"
             ],
 
@@ -2773,7 +2863,6 @@
                 "Бирюза",
                 "Аквамарин",
                 "Берилл",
-                "Сардоникс",
                 "Хризолит",
                 "Цитрин",
                 "Авантюрин",
@@ -2996,7 +3085,7 @@
                     "Ты слишком долго живёшь на внутреннем резерве",
 
                 selectionReason:
-                    "Сейчас тебе особенно важен минерал, связанный с восстановлением энергии, выносливостью и более бережным отношением к собственному ресурсу.",
+                    "Сейчас тебе особенно важна поддержка, связанная с восстановлением энергии, выносливостью и более бережным отношением к собственному ресурсу.",
 
                 manifestations: [
                     {
@@ -3052,7 +3141,7 @@
                     "Твой внутренний контроль давно работает без выходных",
 
                 selectionReason:
-                    "Сейчас особенно важен минерал, который символически связан со спокойствием, ясностью, заземлением и снижением внутреннего напряжения.",
+                    "Сейчас особенно важна поддержка, связанная со спокойствием, ясностью, заземлением и снижением внутреннего напряжения.",
 
                 manifestations: [
                     {
@@ -3110,7 +3199,7 @@
                     "Тебе нужна не гонка за деньгами, а ощущение устойчивости",
 
                 selectionReason:
-                    "В денежном запросе особенно важен минерал, связанный с устойчивостью, возможностями, ясными действиями и правом принимать результат.",
+                    "В денежном запросе особенно важна поддержка, связанная с устойчивостью, возможностями, ясными действиями и правом принимать результат.",
 
                 manifestations: [
                     {
@@ -3169,7 +3258,7 @@
                     "Ты не потеряла смелость — ты слишком долго оценивала себя чужими глазами",
 
                 selectionReason:
-                    "Сейчас особенно важен минерал, связанный с уверенностью, смелостью, действием и правом показывать себя без требования быть идеальной.",
+                    "Сейчас особенно важна поддержка, связанная с уверенностью, смелостью, действием и правом показывать себя без требования быть идеальной.",
 
                 manifestations: [
                     {
@@ -3229,7 +3318,7 @@
                     "Тебе важно вернуть себя в центр собственной жизни",
 
                 selectionReason:
-                    "В запросе на отношения особенно важен минерал, связанный с открытым общением, взаимностью, эмоциональным восстановлением и уважением к собственным желаниям.",
+                    "В запросе на отношения особенно важна поддержка, связанная с открытым общением, взаимностью, эмоциональным восстановлением и уважением к собственным желаниям.",
 
                 manifestations: [
                     {
@@ -3288,7 +3377,7 @@
                     "Сейчас тебе нужна не идеальная цель, а следующий честный шаг",
 
                 selectionReason:
-                    "Сейчас особенно важен минерал, связанный с ясностью, осознанностью, фокусом и способностью увидеть не всю дорогу, а ближайший реальный шаг.",
+                    "Сейчас особенно важна поддержка, связанная с ясностью, осознанностью, фокусом и способностью увидеть ближайший реальный шаг.",
 
                 manifestations: [
                     {
@@ -3347,7 +3436,7 @@
                     "Тебе важно почувствовать, что жизнь не нужно всё время удерживать силой",
 
                 selectionReason:
-                    "Сейчас особенно важен минерал, связанный с устойчивостью, спокойствием, контактом с собой и ощущением почвы под ногами.",
+                    "Сейчас особенно важна поддержка, связанная с устойчивостью, спокойствием, контактом с собой и ощущением почвы под ногами.",
 
                 manifestations: [
                     {
@@ -3407,7 +3496,9 @@
             expressionNumber: null,
             requestId: "",
             manifestationId: "",
-            selectedStoneName: ""
+            characterStoneName: "",
+            expressionStoneName: "",
+            mainStoneName: ""
         };
 
         const screens = Array.from(
@@ -3522,19 +3613,9 @@
                 return null;
             }
 
-            const characterNumber = reduceNumber(day);
-
-            /*
-             * Например:
-             * 16.12 → 16 + 12 = 28 → 2 + 8 = 10 → 1.
-             */
-            const expressionNumber = reduceNumber(
-                day + month
-            );
-
             return {
-                characterNumber,
-                expressionNumber
+                characterNumber: reduceNumber(day),
+                expressionNumber: reduceNumber(day + month)
             };
         }
 
@@ -3666,138 +3747,104 @@
             );
         }
 
-        function getPersonalStonePool() {
-            const characterStones =
-                stoneGroups[state.characterNumber] || [];
+        function getPriority(manifestation) {
+            const specific =
+                manifestationPriorities[manifestation.id] || [];
 
-            const expressionStones =
-                stoneGroups[state.expressionNumber] || [];
-
-            const combinedStones = Array.from(
-                new Set(
-                    characterStones.concat(expressionStones)
-                )
-            );
-
-            return {
-                characterStones,
-                expressionStones,
-                combinedStones
-            };
-        }
-
-        function selectStone(pool, manifestation) {
-            const specificPriority =
-                manifestationPriorities[
-                    manifestation.id
-                ] || [];
-
-            const generalPriority =
+            const general =
                 requestPriorities[state.requestId] || [];
 
-            const completePriority = Array.from(
-                new Set(
-                    specificPriority.concat(generalPriority)
-                )
+            return Array.from(
+                new Set(specific.concat(general))
             );
+        }
 
+        function pickStoneFromGroup(group, priority) {
             const selectedName =
-                completePriority.find(
-                    function (stoneName) {
-                        return (
-                            pool.combinedStones.includes(
-                                stoneName
-                            ) &&
-                            Boolean(stoneCatalog[stoneName])
-                        );
-                    }
-                ) ||
-                pool.combinedStones.find(
-                    function (stoneName) {
-                        return Boolean(
-                            stoneCatalog[stoneName]
-                        );
-                    }
-                );
+                priority.find(function (stoneName) {
+                    return (
+                        group.includes(stoneName) &&
+                        Boolean(stoneCatalog[stoneName])
+                    );
+                }) ||
+                group.find(function (stoneName) {
+                    return Boolean(stoneCatalog[stoneName]);
+                });
 
             return selectedName
                 ? stoneCatalog[selectedName]
                 : stoneCatalog["Аметист"];
         }
 
-        function getStoneSourceText(
-            stoneName,
-            pool
+        function chooseMainStone(
+            characterStone,
+            expressionStone,
+            priority
         ) {
-            const inCharacter =
-                pool.characterStones.includes(stoneName);
-
-            const inExpression =
-                pool.expressionStones.includes(stoneName);
-
-            if (inCharacter && inExpression) {
-                return (
-                    "числу характера " +
-                    state.characterNumber +
-                    " и числу экспрессии " +
-                    state.expressionNumber
-                );
+            if (
+                characterStone.name ===
+                expressionStone.name
+            ) {
+                return characterStone;
             }
 
-            if (inCharacter) {
-                return (
-                    "числу характера " +
-                    state.characterNumber
-                );
-            }
+            const characterPosition =
+                priority.indexOf(characterStone.name);
 
-            if (inExpression) {
-                return (
-                    "числу экспрессии " +
-                    state.expressionNumber
-                );
-            }
+            const expressionPosition =
+                priority.indexOf(expressionStone.name);
 
-            return "твоей дате рождения";
+            const safeCharacterPosition =
+                characterPosition === -1
+                    ? Number.MAX_SAFE_INTEGER
+                    : characterPosition;
+
+            const safeExpressionPosition =
+                expressionPosition === -1
+                    ? Number.MAX_SAFE_INTEGER
+                    : expressionPosition;
+
+            return safeCharacterPosition <=
+                safeExpressionPosition
+                ? characterStone
+                : expressionStone;
         }
 
-        function setStoneColors(element, colors) {
-            element.style.setProperty(
-                "--stone-color-one",
-                colors[0]
-            );
-
-            element.style.setProperty(
-                "--stone-color-two",
-                colors[1]
-            );
-        }
-
-        function configureStonePhoto(stone) {
+        function setStoneVisual(prefix, stone) {
             const image = document.getElementById(
-                "result-stone-image"
-            );
-
-            const credit = document.getElementById(
-                "result-stone-credit"
+                prefix + "-stone-image"
             );
 
             const orb = document.getElementById(
-                "result-stone-orb"
+                prefix + "-stone-orb"
             );
 
-            setStoneColors(orb, stone.colors);
+            const credit = document.getElementById(
+                prefix + "-stone-credit"
+            );
+
+            orb.style.setProperty(
+                "--stone-color-one",
+                stone.colors[0]
+            );
+
+            orb.style.setProperty(
+                "--stone-color-two",
+                stone.colors[1]
+            );
 
             orb.dataset.initial =
                 stone.name.charAt(0).toUpperCase();
 
-            image.hidden = true;
-            credit.hidden = true;
-
-            image.removeAttribute("src");
-            credit.removeAttribute("href");
-
             orb.classList.add("image-fallback");
+
+            image.hidden = true;
+            image.removeAttribute("src");
+
+            if (credit) {
+                credit.hidden = true;
+                credit.removeAttribute("href");
+            }
 
             if (!stone.image) {
                 return;
@@ -3810,12 +3857,9 @@
 
             image.onload = function () {
                 image.hidden = false;
+                orb.classList.remove("image-fallback");
 
-                orb.classList.remove(
-                    "image-fallback"
-                );
-
-                if (stone.imagePage) {
+                if (credit && stone.imagePage) {
                     credit.href = stone.imagePage;
                     credit.hidden = false;
                 }
@@ -3823,72 +3867,102 @@
 
             image.onerror = function () {
                 image.hidden = true;
-                credit.hidden = true;
+                orb.classList.add("image-fallback");
 
-                orb.classList.add(
-                    "image-fallback"
-                );
+                if (credit) {
+                    credit.hidden = true;
+                }
             };
 
             image.src = stone.image;
         }
 
-        function renderStoneTags(
-            containerId,
-            stones,
-            selectedStoneName
+        function getMainLayerText(
+            characterStone,
+            expressionStone,
+            mainStone
         ) {
-            const container = document.getElementById(
-                containerId
+            if (
+                characterStone.name ===
+                expressionStone.name
+            ) {
+                return (
+                    "Этот минерал повторяется и в числе характера, и в числе экспрессии. " +
+                    "Поэтому его тема сейчас особенно заметна в твоём результате."
+                );
+            }
+
+            if (
+                mainStone.name ===
+                characterStone.name
+            ) {
+                return (
+                    "Сейчас твой запрос сильнее связан с внутренним состоянием: " +
+                    "тем, как ты переживаешь напряжение, где теряешь опору и что слишком долго держишь внутри."
+                );
+            }
+
+            return (
+                "Сейчас твой запрос сильнее связан с проявлением: " +
+                "тем, как ты действуешь, говоришь о себе, принимаешь решения и показываешь свою ценность внешнему миру."
             );
-
-            container.innerHTML = "";
-
-            stones.forEach(function (stoneName) {
-                const tag = document.createElement("span");
-
-                tag.className = "stone-tag";
-                tag.textContent = stoneName;
-
-                if (stoneName === selectedStoneName) {
-                    tag.classList.add("selected");
-                }
-
-                container.appendChild(tag);
-            });
         }
 
         function buildResult() {
-            const characterProfile =
-                numberProfiles[state.characterNumber];
+            const characterInsight =
+                numberInsights[state.characterNumber];
+
+            const expressionInsight =
+                numberInsights[state.expressionNumber];
 
             const request = requests[state.requestId];
-
-            const manifestation =
-                findManifestation();
-
-            const pool =
-                getPersonalStonePool();
+            const manifestation = findManifestation();
 
             if (
-                !characterProfile ||
+                !characterInsight ||
+                !expressionInsight ||
                 !request ||
                 !manifestation
             ) {
                 return;
             }
 
-            const selectedStone =
-                selectStone(pool, manifestation);
+            const characterGroup =
+                stoneGroups[state.characterNumber] || [];
 
-            state.selectedStoneName =
-                selectedStone.name;
+            const expressionGroup =
+                stoneGroups[state.expressionNumber] || [];
 
-            const stoneSource =
-                getStoneSourceText(
-                    selectedStone.name,
-                    pool
+            const priority =
+                getPriority(manifestation);
+
+            const characterStone =
+                pickStoneFromGroup(
+                    characterGroup,
+                    priority
                 );
+
+            const expressionStone =
+                pickStoneFromGroup(
+                    expressionGroup,
+                    priority
+                );
+
+            const mainStone =
+                chooseMainStone(
+                    characterStone,
+                    expressionStone,
+                    priority
+                );
+
+            state.characterStoneName =
+                characterStone.name;
+
+            state.expressionStoneName =
+                expressionStone.name;
+
+            state.mainStoneName =
+                mainStone.name;
 
             const resultTitle =
                 document.getElementById(
@@ -3899,18 +3973,20 @@
                 state.name.trim()
                     ? state.name.trim() +
                       ", твой камень опоры — " +
-                      selectedStone.name
+                      mainStone.name
                     : "Твой камень опоры — " +
-                      selectedStone.name;
+                      mainStone.name;
 
             document.getElementById(
                 "result-subtitle"
             ).textContent =
-                "Он выбран из твоего личного списка по числу характера " +
-                state.characterNumber +
-                " и числу экспрессии " +
-                state.expressionNumber +
-                " — с учётом того, что особенно важно для тебя сейчас.";
+                "По числу характера для тебя выбран " +
+                characterStone.name +
+                ", по числу экспрессии — " +
+                expressionStone.name +
+                ". С учётом текущего запроса главным акцентом становится " +
+                mainStone.name +
+                ".";
 
             document.getElementById(
                 "character-number"
@@ -3920,12 +3996,28 @@
             document.getElementById(
                 "character-title"
             ).textContent =
-                characterProfile.title;
+                characterInsight.characterTitle;
 
             document.getElementById(
                 "character-description"
             ).textContent =
-                characterProfile.description;
+                characterInsight.characterDescription;
+
+            document.getElementById(
+                "character-pain"
+            ).textContent =
+                characterInsight.characterPain;
+
+            document.getElementById(
+                "character-stone-name"
+            ).textContent =
+                characterStone.name;
+
+            document.getElementById(
+                "character-stone-support"
+            ).textContent =
+                characterStone.description +
+                " В твоём расчёте он поддерживает именно внутренний уровень: помогает помнить о своих чувствах, границах и реальном состоянии.";
 
             document.getElementById(
                 "expression-number"
@@ -3933,34 +4025,62 @@
                 state.expressionNumber;
 
             document.getElementById(
+                "expression-title"
+            ).textContent =
+                expressionInsight.expressionTitle;
+
+            document.getElementById(
                 "expression-description"
             ).textContent =
-                expressionDescriptions[
-                    state.expressionNumber
-                ];
+                expressionInsight.expressionDescription;
 
             document.getElementById(
-                "result-stone-name"
+                "expression-pain"
             ).textContent =
-                selectedStone.name;
+                expressionInsight.expressionPain;
 
             document.getElementById(
-                "result-stone-type"
+                "expression-stone-name"
             ).textContent =
-                "Подходит по " + stoneSource;
+                expressionStone.name;
 
             document.getElementById(
-                "result-stone-description"
+                "expression-stone-support"
             ).textContent =
-                selectedStone.description;
+                expressionStone.description +
+                " В твоём расчёте он поддерживает внешний уровень: помогает мягче проявляться, действовать и не прятать себя за напряжением или сомнениями.";
 
             document.getElementById(
-                "result-stone-help"
+                "main-stone-name"
+            ).textContent =
+                mainStone.name;
+
+            document.getElementById(
+                "main-stone-type"
+            ).textContent =
+                mainStone.name === characterStone.name &&
+                mainStone.name === expressionStone.name
+                    ? "Камень обоих уровней"
+                    : mainStone.name === characterStone.name
+                        ? "Главный акцент — внутренняя опора"
+                        : "Главный акцент — проявление";
+
+            document.getElementById(
+                "main-stone-description"
+            ).textContent =
+                mainStone.description;
+
+            document.getElementById(
+                "main-stone-help"
             ).textContent =
                 request.selectionReason +
-                " Из минералов твоей даты именно " +
-                selectedStone.name +
-                " точнее всего совпадает с выбранным тобой состоянием: «" +
+                " " +
+                getMainLayerText(
+                    characterStone,
+                    expressionStone,
+                    mainStone
+                ) +
+                " Выбранное тобой состояние звучит так: «" +
                 manifestation.label.toLowerCase() +
                 "».";
 
@@ -3979,45 +4099,40 @@
             ).textContent =
                 manifestation.practice;
 
-            document.getElementById(
-                "character-group-number"
-            ).textContent =
-                state.characterNumber;
-
-            document.getElementById(
-                "expression-group-number"
-            ).textContent =
-                state.expressionNumber;
-
-            renderStoneTags(
-                "character-stone-list",
-                pool.characterStones,
-                selectedStone.name
+            setStoneVisual(
+                "character",
+                characterStone
             );
 
-            renderStoneTags(
-                "expression-stone-list",
-                pool.expressionStones,
-                selectedStone.name
+            setStoneVisual(
+                "expression",
+                expressionStone
             );
 
-            configureStonePhoto(selectedStone);
+            setStoneVisual(
+                "main",
+                mainStone
+            );
         }
 
         function getPlainTextResult() {
-            const characterProfile =
-                numberProfiles[state.characterNumber];
+            const characterInsight =
+                numberInsights[state.characterNumber];
+
+            const expressionInsight =
+                numberInsights[state.expressionNumber];
 
             const request = requests[state.requestId];
+            const manifestation = findManifestation();
 
-            const manifestation =
-                findManifestation();
+            const characterStone =
+                stoneCatalog[state.characterStoneName];
 
-            const pool =
-                getPersonalStonePool();
+            const expressionStone =
+                stoneCatalog[state.expressionStoneName];
 
-            const selectedStone =
-                stoneCatalog[state.selectedStoneName];
+            const mainStone =
+                stoneCatalog[state.mainStoneName];
 
             const nameLine =
                 state.name.trim()
@@ -4029,33 +4144,39 @@
                 nameLine,
                 "",
                 "Твой камень опоры — " +
-                    selectedStone.name,
+                    mainStone.name,
                 "",
                 "Число характера: " +
-                    state.characterNumber +
-                    " — " +
-                    characterProfile.title,
+                    state.characterNumber,
+                characterInsight.characterTitle,
                 "",
-                characterProfile.description,
+                "Твоя внутренняя боль:",
+                characterInsight.characterPain,
+                "",
+                "Камень характера — " +
+                    characterStone.name,
+                characterStone.description,
                 "",
                 "Число экспрессии: " +
                     state.expressionNumber,
+                expressionInsight.expressionTitle,
                 "",
-                expressionDescriptions[
-                    state.expressionNumber
-                ],
+                "Сложность в проявлении:",
+                expressionInsight.expressionPain,
                 "",
-                "Камни числа характера:",
-                pool.characterStones.join(", "),
+                "Камень проявления — " +
+                    expressionStone.name,
+                expressionStone.description,
                 "",
-                "Камни числа экспрессии:",
-                pool.expressionStones.join(", "),
-                "",
-                "Почему выбран " +
-                    selectedStone.name +
+                "Почему главным сейчас становится " +
+                    mainStone.name +
                     ":",
-                selectedStone.description,
                 request.selectionReason,
+                getMainLayerText(
+                    characterStone,
+                    expressionStone,
+                    mainStone
+                ),
                 "",
                 "Текущий запрос:",
                 request.label,
@@ -4091,23 +4212,14 @@
                 document.createElement("textarea");
 
             temporaryArea.value = text;
-
-            temporaryArea.setAttribute(
-                "readonly",
-                ""
-            );
-
+            temporaryArea.setAttribute("readonly", "");
             temporaryArea.style.position = "fixed";
             temporaryArea.style.opacity = "0";
 
-            document.body.appendChild(
-                temporaryArea
-            );
+            document.body.appendChild(temporaryArea);
 
             temporaryArea.select();
-
             document.execCommand("copy");
-
             temporaryArea.remove();
         }
 
@@ -4115,16 +4227,13 @@
 
         function showToast(message) {
             toast.textContent = message;
-
             toast.classList.add("visible");
 
             window.clearTimeout(toastTimer);
 
             toastTimer = window.setTimeout(
                 function () {
-                    toast.classList.remove(
-                        "visible"
-                    );
+                    toast.classList.remove("visible");
                 },
                 2600
             );
@@ -4137,7 +4246,9 @@
             state.expressionNumber = null;
             state.requestId = "";
             state.manifestationId = "";
-            state.selectedStoneName = "";
+            state.characterStoneName = "";
+            state.expressionStoneName = "";
+            state.mainStoneName = "";
 
             nameInput.value = "";
             birthDateInput.value = "";
@@ -4146,9 +4257,7 @@
             step2Error.textContent = "";
             step3Error.textContent = "";
 
-            birthDateInput.classList.remove(
-                "invalid"
-            );
+            birthDateInput.classList.remove("invalid");
 
             manifestationChoices.innerHTML = "";
 
@@ -4330,11 +4439,8 @@
                 "click",
                 async function () {
                     const shareData = {
-                        title:
-                            "Твой камень опоры",
-
-                        text:
-                            getPlainTextResult()
+                        title: "Твой камень опоры",
+                        text: getPlainTextResult()
                     };
 
                     if (navigator.share) {
